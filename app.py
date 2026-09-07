@@ -1,10 +1,21 @@
 import streamlit as st
 import fitz  # PyMuPDF
 import requests
+import os
+from dotenv import load_dotenv
 
-API_KEY = ""
+load_dotenv()
+
+API_KEY = os.getenv("GROQ_API_KEY")
+
+
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
-MODEL_ID = "llama-3.3-70b-versatile"
+MODEL_ID = "openai/gpt-oss-20b"
+# "qwen/qwen3.6-27b"
+
+if not API_KEY:
+    st.error("GROQ_API_KEY is not configured. Check your .env file.") 
+    st.stop()
 
 def extract_pdf_text(pdf_file):
     doc = fitz.open(stream=pdf_file.read(), filetype="pdf")
@@ -22,7 +33,7 @@ if uploaded_file and question:
     with st.spinner("Extracting text from PDF..."):
         extracted_text = extract_pdf_text(uploaded_file)
 
-    prompt = f"Context:\n{extracted_text}\n\nQuestion: {question}"
+    prompt = f"""Context:\n{extracted_text}\n\nQuestion: {question}"""
 
     headers = {
         "Authorization": f"Bearer {API_KEY}",
@@ -30,8 +41,10 @@ if uploaded_file and question:
     }
 
     payload = {
-        "model": "llama-3.3-70b-versatile",
+        "model": MODEL_ID,
         "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": 500,
+       
     }
 
     with st.spinner("Getting answer from Groq LLaMA..."):
@@ -43,3 +56,13 @@ if uploaded_file and question:
         st.write(answer)
     else:
         st.error(f"Error {response.status_code}: {response.text}")
+
+
+# response = requests.get(
+#     "https://api.groq.com/openai/v1/models",
+#     headers={
+#         "Authorization": f"Bearer {API_KEY}"
+#     }
+# )
+
+# st.write(response.json())
