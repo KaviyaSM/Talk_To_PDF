@@ -54,6 +54,6 @@ Then open the provided local URL in your browser (usually http://localhost:8501)
 1. 📤 The user uploads a PDF file.
 2. 🧾 The app extracts the first 5000 characters of text using **PyMuPDF**.
 3. ❓ The user inputs a question related to the document.
-4. 📡 The app sends a prompt (**context + question**) to **Groq’s LLaMA model**.
+4. 📡 The app sends a prompt (**context + question**) to **Groq’s openai/gpt-oss-20b model**.
 5. 🤖 The model returns a contextual answer based on the extracted content.
 
