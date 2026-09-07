@@ -13,7 +13,7 @@
 
 - 📄 Upload any PDF file.
 - 🤖 Ask questions based on the PDF content.
-- 💡 Receive contextual answers powered by the **LLaMA 3.3 70B** model.
+- 💡 Receive contextual answers powered by the **openai/gpt-oss-20b** model.
 - ⚡ Fast and easy to use Streamlit interface.
 
 ---
