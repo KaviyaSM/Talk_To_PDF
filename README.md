@@ -1,6 +1,6 @@
 # 🧾 Talk to PDF
 
-**Talk to PDF** is a simple Streamlit app that allows you to upload a PDF file, ask questions about its content, and get intelligent answers using the **LLaMA 3.3 70B** model via the Groq API.
+**Talk to PDF** is a simple Streamlit app that allows you to upload a PDF file, ask questions about its content, and get intelligent answers using the **openai/gpt-oss-20b** model via the Groq API.
 
 ---
 ## ScreenShot 
@@ -22,7 +22,7 @@
 
 - [Streamlit](https://streamlit.io/)
 - [PyMuPDF (fitz)](https://pymupdf.readthedocs.io/en/latest/) – for PDF text extraction
-- [Groq API](https://console.groq.com/) – for interacting with the LLaMA 3 model
+- [Groq API](https://console.groq.com/) – for interacting with the openai model
 
 ---
 
